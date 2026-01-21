@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Derrick Jones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f8f9fa;
+            --color-text: #1a1a2e;
+            --color-text-muted: #4a4a68;
+            --color-accent: #1e3a5f;
+            --color-accent-secondary: #c9a227;
+            --color-accent-light: #e8eef4;
+            --color-border: #d1d9e6;
+            --color-white: #ffffff;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            font-size: 11pt;
+        }
+
+        .document-header {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 0.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .document-header h1 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .document-header .back-link {
+            color: var(--color-accent-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: opacity 0.2s;
+            position: absolute;
+            right: 0;
+        }
+
+        .document-header .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .doc-nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
+        }
+
+        .doc-nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .doc-nav a:hover {
+            color: var(--color-white);
+        }
+
+        .doc-nav a.active {
+            color: var(--color-accent-secondary);
+            font-weight: 500;
+        }
+
+        .document-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .document-paper {
+            background: var(--color-white);
+            padding: 0.5in 0.6in;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--color-border);
+        }
+
+        .resume-header {
+            text-align: center;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .resume-header h2 {
+            font-family: var(--font-display);
+            font-size: 18pt;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.1rem;
+        }
+
+        .resume-header .title {
+            color: var(--color-accent-secondary);
+            font-weight: 500;
+            font-size: 10pt;
+            letter-spacing: 0.05em;
+        }
+
+        .resume-section {
+            margin-bottom: 0.6rem;
+        }
+
+        .resume-section h3 {
+            font-family: var(--font-display);
+            font-size: 12pt;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 2px solid var(--color-accent-secondary);
+            padding-bottom: 0.15rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .summary-text {
+            text-align: justify;
+            font-size: 11pt;
+            line-height: 1.5;
+        }
+
+        .item {
+            margin-bottom: 0.5rem;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.15rem;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 11pt;
+            color: var(--color-text);
+        }
+
+        .item-company {
+            color: var(--color-accent);
+            font-weight: 500;
+            font-size: 10pt;
+        }
+
+        .item-date {
+            color: var(--color-text-muted);
+            font-size: 10pt;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .item ul {
+            margin-left: 1.1rem;
+            font-size: 10pt;
+        }
+
+        .item li {
+            margin-bottom: 0.1rem;
+            line-height: 1.4;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem 1rem;
+        }
+
+        .skill-category {
+            font-size: 10pt;
+            margin-bottom: 0.15rem;
+        }
+
+        .skill-category strong {
+            color: var(--color-accent);
+            font-size: 10pt;
+        }
+
+        .certs-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.15rem 1rem;
+            font-size: 10pt;
+        }
+
+        .certs-list li {
+            list-style: none;
+            padding-left: 0.8rem;
+            position: relative;
+        }
+
+        .certs-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.45em;
+            width: 5px;
+            height: 5px;
+            background: var(--color-accent-secondary);
+            border-radius: 50%;
+        }
+
+        .edu-item {
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-item .item-title {
+            font-size: 11pt;
+        }
+
+        .edu-item .item-company {
+            font-size: 10pt;
+        }
+
+        .edu-item .item-date {
+            font-size: 10pt;
+        }
+
+        .print-btn {
+            display: block;
+            width: fit-content;
+            margin: 1.5rem auto;
+            padding: 10px 25px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--color-accent-secondary);
+        }
+
+        @media print {
+            .document-header, .print-btn { display: none !important; }
+            .document-container { padding: 0; margin: 0; max-width: none; }
+            .document-paper { box-shadow: none; border: none; padding: 0.5in; }
+            body { background: white; font-size: 11pt; }
+            @page { margin: 0.5in; size: letter; }
+        }
+
+        @media (max-width: 600px) {
+            .two-col, .certs-list { grid-template-columns: 1fr; }
+            .item-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-header">
+        <div class="header-top">
+            <h1>Resume</h1>
+            <a href="../index.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Portfolio
+            </a>
+        </div>
+        <nav class="doc-nav">
+            <a href="cover-letter.html">Cover Letter</a>
+            <a href="resume.html" class="active">Resume</a>
+            <a href="executive-summary.html">Executive Summary</a>
+            <a href="program-learning-summaries.html">Learning Summaries</a>
+            <a href="reference-request-letter.html">Reference Request</a>
+            <a href="thank-you-letter.html">Thank You Letter</a>
+        </nav>
+    </div>
+
+    <div class="document-container">
+        <div class="document-paper">
+            <header class="resume-header">
+                <h2>Derrick Jones</h2>
+                <p class="title">Project Manager | Data Analyst | Army National Guard</p>
+            </header>
+
+            <section class="resume-section">
+                <h3>Professional Summary</h3>
+                <p class="summary-text">
+                    Self-motivated professional with a background in business analytics, counterintelligence, and project management. Strong understanding of SharePoint development and experience leading cross-functional teams. Effective in data analysis and visualization to improve decision-making. Certified SAFe 6 Scrum Master and Lean Six Sigma Green Belt with proven ability to deliver results in fast-paced environments.
+                </p>
+            </section>
+
+            <section class="resume-section">
+                <h3>Professional Experience</h3>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <span class="item-title">Associate Consultant - Data Analytics</span>
+                            <span class="item-company"> | Greencastle Consulting</span>
+                        </div>
+                        <span class="item-date">May 2025 - Present</span>
+                    </div>
+                    <ul>
+                        <li>Deliver data-driven solutions for clients as part of the Data Analytics consulting team</li>
+                        <li>Apply business analysis and project management expertise to diverse client engagements</li>
+                        <li>Collaborate with cross-functional teams to translate business requirements into technical solutions</li>
+                        <li>Develop Power BI dashboards and reports to visualize key performance indicators for stakeholders</li>
+                        <li>Document technical specifications and create user guides for client deliverables</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <span class="item-title">Management Analyst - Contractor</span>
+                            <span class="item-company"> | U.S. Army Accessions Information Environment</span>
+                        </div>
+                        <span class="item-date">Mar 2023 - Oct 2024</span>
+                    </div>
+                    <ul>
+                        <li>Optimized project performance by streamlining business processes through analysis of bottlenecks</li>
+                        <li>Proactively managed risks, maintaining project timeline and scope through effective mitigation strategies</li>
+                        <li>Applied agile methodologies, driving project success through cross-functional collaboration</li>
+                        <li>Facilitated requirements gathering sessions and documented business process workflows</li>
+                        <li>Coordinated with government stakeholders to ensure compliance with Army regulations and standards</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <span class="item-title">Knowledge Management Analyst - Contractor</span>
+                            <span class="item-company"> | U.S. Army Cadet Command</span>
+                        </div>
+                        <span class="item-date">Jul 2021 - Mar 2023</span>
+                    </div>
+                    <ul>
+                        <li>Developed and maintained SharePoint solutions to improve organizational knowledge sharing</li>
+                        <li>Led cross-functional teams to complete projects and change management requests on time</li>
+                        <li>Used analytics tools to measure effectiveness of initiatives and evaluate impact on KPIs</li>
+                        <li>Created training materials and conducted user training sessions for new system implementations</li>
+                        <li>Managed document libraries and implemented information architecture improvements</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <span class="item-title">Business Analyst - Interactive Analytics</span>
+                            <span class="item-company"> | Parallon</span>
+                        </div>
+                        <span class="item-date">Oct 2017 - Jul 2021</span>
+                    </div>
+                    <ul>
+                        <li>Managed UAT, maintenance, and project management of Post Call Interactive Analytics system</li>
+                        <li>Conducted data analysis and visualization resulting in improved decision-making processes</li>
+                        <li>Analyzed call transcripts using NLP techniques to improve speech analytics accuracy by 15%</li>
+                        <li>Coordinated with IT and business stakeholders to implement system enhancements and bug fixes</li>
+                        <li>Developed standard operating procedures and documentation for analytics processes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h3>Military Experience</h3>
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <span class="item-title">Counterintelligence (CI) Special Agent</span>
+                            <span class="item-company"> | 20th SFG(A), KY ARNG</span>
+                        </div>
+                        <span class="item-date">Aug 2020 - Present</span>
+                    </div>
+                    <ul>
+                        <li>Combat Foreign Intelligence Entities and International Terrorist Organizations through CI measures</li>
+                        <li>Conduct investigations to identify and prevent espionage and threats to national security</li>
+                        <li>Provide intelligence support to Special Forces operations in complex environments</li>
+                        <li>Prepare detailed intelligence reports and briefings for senior military leadership</li>
+                        <li>Maintain security clearance and complete continuing education requirements for CI operations</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <span class="item-title">Military Police Officer</span>
+                            <span class="item-company"> | Kentucky Army National Guard</span>
+                        </div>
+                        <span class="item-date">Jan 2012 - Aug 2020</span>
+                    </div>
+                    <ul>
+                        <li>Led multinational police force of 20+ soldiers maintaining law and order for 15,000+ personnel</li>
+                        <li>Assisted planning and execution of missions including presidential security operations</li>
+                        <li>Trained and mentored junior soldiers on law enforcement procedures and tactical operations</li>
+                        <li>Recognized as NCO of the Year (2022) and Minuteman of the Year by EANGUS (2022)</li>
+                        <li>Managed logistics, personnel accountability, and operations during state emergency activations</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h3>Education</h3>
+                <div class="two-col">
+                    <div class="edu-item">
+                        <span class="item-title">BA in Business Administration</span><br>
+                        <span class="item-company">American Public University System</span>
+                        <span class="item-date"> - February 2026</span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="item-title">AS in Intelligence Operations</span><br>
+                        <span class="item-company">Cochise College</span>
+                        <span class="item-date"> - February 2026</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h3>Skills</h3>
+                <div class="two-col">
+                    <div class="skill-category">
+                        <strong>Project Management:</strong> Agile/Scrum, SAFe, Waterfall, Risk Management
+                    </div>
+                    <div class="skill-category">
+                        <strong>Process Improvement:</strong> Lean Six Sigma, DMAIC, Value Stream Mapping
+                    </div>
+                    <div class="skill-category">
+                        <strong>Technical:</strong> SharePoint, Power BI, SQL, Data Analysis, NLP/Speech Analytics
+                    </div>
+                    <div class="skill-category">
+                        <strong>Leadership:</strong> Team Management, Change Management, Stakeholder Engagement
+                    </div>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h3>Certifications & Accomplishments</h3>
+                <ul class="certs-list">
+                    <li>Certified SAFe 6 Scrum Master - Scaled Agile (2025)</li>
+                    <li>Lean Six Sigma Green Belt - Stronghold (2025)</li>
+                    <li>PMI PMP Exam Prep Course (2025)</li>
+                    <li>Professional Project Leadership (2025)</li>
+                    <li>IBM Enterprise Design Thinking Practitioner (2024)</li>
+                    <li>NCO of the Year - KY National Guard (2022)</li>
+                    <li>Minuteman of the Year - EANGUS (2022)</li>
+                </ul>
+            </section>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+</body>
+</html>

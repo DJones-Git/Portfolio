@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional ePortfolio | Derrick Jones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f8f9fa;
+            --color-text: #1a1a2e;
+            --color-text-muted: #4a4a68;
+            --color-accent: #1e3a5f;
+            --color-accent-secondary: #c9a227;
+            --color-accent-light: #e8eef4;
+            --color-border: #d1d9e6;
+            --color-white: #ffffff;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-accent);
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+
+        nav .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        nav .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-accent-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 2rem 80px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #2d4a6f 50%, var(--color-accent) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--color-accent-secondary);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--color-accent-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hero .summary {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--color-accent-secondary);
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--color-accent-secondary);
+        }
+
+        .section-intro {
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+            margin-top: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Document Cards - Grid Layout */
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .document-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-accent-secondary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .document-card:hover {
+            box-shadow: 0 10px 40px rgba(30, 58, 95, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .document-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .document-card .card-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.25rem;
+            color: var(--color-accent);
+        }
+
+        .document-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        .document-card p {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .document-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .document-link:hover {
+            color: var(--color-accent-secondary);
+            gap: 14px;
+        }
+
+        .document-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Dual Timeline for Career */
+        .timeline-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .timeline-column h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-accent-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .timeline-column h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-accent-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.4rem;
+            width: 10px;
+            height: 10px;
+            background: var(--color-accent);
+            border: 2px solid var(--color-accent-secondary);
+            border-radius: 50%;
+            transform: translateX(-4px);
+        }
+
+        .timeline-item .year {
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.4rem 0;
+            color: var(--color-text);
+        }
+
+        .timeline-item p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .certification-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .certification-card:hover {
+            border-color: var(--color-accent-secondary);
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.1);
+        }
+
+        .certification-card .cert-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--color-accent-secondary);
+            flex-shrink: 0;
+        }
+
+        .certification-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--color-text);
+        }
+
+        .certification-card .issuer {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-card .year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        /* Learning Cards - Grid Layout */
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .learning-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .learning-card:hover {
+            border-left: 4px solid var(--color-accent-secondary);
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.08);
+        }
+
+        .learning-card .course-code {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .learning-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        .learning-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Transcript Section */
+        .transcript-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+        }
+
+        .transcript-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .transcript-card p {
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .registrar-info {
+            background: var(--color-accent-light);
+            padding: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .registrar-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Recommendations */
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .recommendation-item {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .recommendation-item .avatar {
+            width: 55px;
+            height: 55px;
+            background: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            flex-shrink: 0;
+        }
+
+        .recommendation-item .info h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--color-text);
+        }
+
+        .recommendation-item .info .title {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 1.5rem;
+        }
+
+        .skill-group h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent-secondary);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            padding: 0.35rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 0;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-accent-secondary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .project-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .project-card .project-type {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-accent-secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .project-card p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .project-card .project-link:hover {
+            color: var(--color-accent-secondary);
+            gap: 12px;
+        }
+
+        .project-card .project-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-accent);
+            color: var(--color-white);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .timeline-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero { padding: 100px 1.5rem 60px; }
+            section { padding: 60px 1.5rem; }
+            .document-grid,
+            .learning-grid,
+            .certifications-grid,
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">Derrick Jones</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#documents">Documents</a></li>
+                <li><a href="#projects">Artifacts</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1>Derrick Jones</h1>
+            <p class="tagline">Project Manager | Data Analyst | Army National Guard</p>
+            <p class="summary">
+                Results-driven professional with expertise in business process optimization, knowledge management,
+                and cross-functional team leadership. With experience spanning data analytics consulting, defense contracting,
+                and corporate business analysis, alongside military service in the 20th Special Forces Group (Airborne), I bring
+                strategic vision and disciplined execution to complex organizational challenges. This ePortfolio presents my
+                professional qualifications, certifications, and career development.
+            </p>
+            <a href="#documents" class="btn">Explore Portfolio</a>
+        </div>
+    </section>
+
+    <section id="documents">
+        <h2>Professional Documents</h2>
+        <p class="section-intro">Core application materials prepared to professional standards.</p>
+
+        <div class="document-grid">
+            <div class="document-card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+                <h3>Cover Letter</h3>
+                <p>A strategic introduction highlighting qualifications and the unique value proposition I bring to organizations.</p>
+                <a href="documents/cover-letter.html" class="document-link">
+                    View Document
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="document-card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <h3>Resume</h3>
+                <p>Comprehensive overview of professional experience, leadership roles, and quantifiable achievements.</p>
+                <a href="documents/resume.html" class="document-link">
+                    View Document
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="document-card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                <h3>Executive Summary</h3>
+                <p>Strategic narrative of professional journey, key accomplishments, and vision for future contributions.</p>
+                <a href="documents/executive-summary.html" class="document-link">
+                    View Document
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="document-card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                </svg>
+                <h3>Reference Request Letter</h3>
+                <p>Formal letter requesting a colleague to serve as a professional reference, demonstrating professional communication.</p>
+                <a href="documents/reference-request-letter.html" class="document-link">
+                    View Document
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="document-card">
+                <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                </svg>
+                <h3>Interview Thank You Letter</h3>
+                <p>Post-interview correspondence expressing gratitude and reinforcing candidacy with key talking points.</p>
+                <a href="documents/thank-you-letter.html" class="document-link">
+                    View Document
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Portfolio Artifacts</h2>
+        <p class="section-intro">Work samples demonstrating professional writing, technical skills, and analytical capabilities.</p>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <p class="project-type">Technical Documentation</p>
+                <h4>Microsoft Word Guide</h4>
+                <p>Instructional document demonstrating proficiency with Microsoft Word, including step-by-step guides for creating tables and inserting charts.</p>
+                <a href="projects/Microsoft_Word_Guide.docx" class="project-link" download>
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <p class="project-type">Presentation</p>
+                <h4>Electric Utility Industry Overview</h4>
+                <p>Comprehensive 25-slide presentation covering electricity generation, grid infrastructure, regulation, and market dynamics with audio narration.</p>
+                <a href="projects/Electric_Utility_Industry_Presentation.pptx" class="project-link" download>
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <p class="project-type">Data Analysis</p>
+                <h4>Spreadsheet Data Analysis</h4>
+                <p>Excel workbook with seven analytical exercises including pivot tables, histograms, line charts, and Pareto analysis of temperature and sales data.</p>
+                <a href="projects/Data_Analysis_Workbook.xlsx" class="project-link" download>
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <p class="project-type">Excel Automation</p>
+                <h4>Christmas Tree Animation</h4>
+                <p>Festive Excel spreadsheet demonstrating creative use of cell formatting and visual design to create a decorative holiday display.</p>
+                <a href="projects/Christmas_Tree_Animation.xlsx" class="project-link" download>
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <p class="project-type">Excel Template</p>
+                <h4>WBS Template</h4>
+                <p>Work Breakdown Structure template with VBA automation for hierarchical task numbering, status tracking, and project organization.</p>
+                <a href="projects/WBS_Template.xlsm" class="project-link" download>
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <p class="project-type">Power BI Template</p>
+                <h4>Power BI Page Layouts</h4>
+                <p>Standardized Power BI template with pre-configured page layouts featuring consistent spacing, colors, and typography for professional reports.</p>
+                <a href="projects/Power_BI_Page_Layouts.pbit" class="project-link" download>
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <p class="section-intro">Dual career path combining civilian expertise with military leadership.</p>
+
+        <div class="timeline-container">
+            <div class="timeline-column">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                    </svg>
+                    Civilian Career
+                </h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="year">May 2025 - Present</span>
+                        <h4>Associate Consultant - Data Analytics</h4>
+                        <p>Greencastle Consulting. Delivering data-driven solutions for clients, applying business analysis and project management expertise.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">Mar 2023 - Oct 2024</span>
+                        <h4>Management Analyst</h4>
+                        <p>U.S. Army Accessions Information Environment. Streamlined business processes and applied agile methodologies for Army projects.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">Jul 2021 - Mar 2023</span>
+                        <h4>Knowledge Management Analyst</h4>
+                        <p>U.S. Army Cadet Command. Led SharePoint development and cross-functional teams for change management initiatives.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">Oct 2017 - Jul 2021</span>
+                        <h4>Business Analyst - Interactive Analytics</h4>
+                        <p>Parallon. Data analysis and visualization production, speech analytics using NLP techniques.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-column">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                    </svg>
+                    National Guard
+                </h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="year">Aug 2020 - Present</span>
+                        <h4>Counterintelligence Special Agent</h4>
+                        <p>20th Special Forces Group (Airborne), KY ARNG. CI operations, source operations, and liaison with intelligence agencies.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">Jan 2012 - Aug 2020</span>
+                        <h4>Military Police Officer</h4>
+                        <p>KY Army National Guard. Led multinational police force, presidential security missions, and emergency management operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Professional Certifications</h2>
+        <p class="section-intro">Industry credentials demonstrating commitment to professional excellence.</p>
+
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>Certified SAFe 6 Scrum Master</h4>
+                    <p class="issuer">Scaled Agile, Inc.</p>
+                    <p class="year">2025</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>Lean Six Sigma Green Belt</h4>
+                    <p class="issuer">Stronghold Leadership</p>
+                    <p class="year">2025</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>PMI PMP Exam Prep Course</h4>
+                    <p class="issuer">Stronghold Leadership / PMI</p>
+                    <p class="year">2025</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>Professional Project Leadership</h4>
+                    <p class="issuer">Stronghold Leadership</p>
+                    <p class="year">2025</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>Enterprise Design Thinking Practitioner</h4>
+                    <p class="issuer">IBM</p>
+                    <p class="year">2024</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>Microsoft Power BI</h4>
+                    <p class="issuer">Udemy</p>
+                    <p class="year">2025</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>BPMN Process Analysis</h4>
+                    <p class="issuer">Microsoft Visio Professional</p>
+                    <p class="year">2024</p>
+                </div>
+            </div>
+
+            <div class="certification-card">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+                <div>
+                    <h4>FEMA ICS/NIMS (4 Courses)</h4>
+                    <p class="issuer">Federal Emergency Management Agency</p>
+                    <p class="year">2016-2017</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Expertise</h2>
+        <p class="section-intro">Technical and professional competencies developed through education and experience.</p>
+
+        <div class="skills-container">
+            <div class="skill-group">
+                <h4>Project Management</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">SAFe Framework</span>
+                    <span class="skill-tag">Waterfall</span>
+                    <span class="skill-tag">Risk Management</span>
+                    <span class="skill-tag">Requirements Gathering</span>
+                    <span class="skill-tag">Stakeholder Management</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Data & Analytics</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">NLP/Speech Analytics</span>
+                    <span class="skill-tag">DAX</span>
+                    <span class="skill-tag">Power Query</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Process Improvement</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Lean Six Sigma</span>
+                    <span class="skill-tag">DMAIC</span>
+                    <span class="skill-tag">BPMN</span>
+                    <span class="skill-tag">Value Stream Mapping</span>
+                    <span class="skill-tag">Process Documentation</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Technical Tools</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">SharePoint</span>
+                    <span class="skill-tag">Microsoft 365</span>
+                    <span class="skill-tag">Visio</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Confluence</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Leadership</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Team Management</span>
+                    <span class="skill-tag">Change Management</span>
+                    <span class="skill-tag">Training & Development</span>
+                    <span class="skill-tag">Cross-Functional Collaboration</span>
+                    <span class="skill-tag">Strategic Planning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Academic Credentials</h2>
+        <p class="section-intro">Formal education and academic records.</p>
+
+        <div class="document-grid">
+            <div class="transcript-card">
+                <h3>Bachelor of Arts in Business Administration</h3>
+                <p><strong>American Public University System</strong><br>February 2026</p>
+                <div class="registrar-info">
+                    <p><strong>Official Transcripts:</strong><br>
+                    Contact: APUStranscripts@apus.edu<br>
+                    Phone: 877-382-4707</p>
+                </div>
+            </div>
+
+            <div class="transcript-card">
+                <h3>Associate of Science in Intelligence Operations</h3>
+                <p><strong>Cochise College</strong><br>February 2026</p>
+                <div class="registrar-info">
+                    <p><strong>Official Transcripts:</strong><br>
+                    Contact: transcripts@cochise.edu<br>
+                    Phone: 800-966-7943</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="references">
+        <h2>Letters of Recommendation</h2>
+        <p class="section-intro">Professional references who can speak to my qualifications and character.</p>
+
+        <div class="recommendations-grid">
+            <div class="recommendation-item">
+                <div class="avatar">DM</div>
+                <div class="info">
+                    <h4>Danny M.</h4>
+                    <p class="title">Managing Director, Greencastle Consulting<br><em>Available upon request</em></p>
+                </div>
+            </div>
+
+            <div class="recommendation-item">
+                <div class="avatar">DG</div>
+                <div class="info">
+                    <h4>Doug G.</h4>
+                    <p class="title">Former Program Manager<br><em>Available upon request</em></p>
+                </div>
+            </div>
+
+            <div class="recommendation-item">
+                <div class="avatar">AC</div>
+                <div class="info">
+                    <h4>Arthur C.</h4>
+                    <p class="title">National Guard Supervisor, 20th SFG(A)<br><em>Available upon request</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="learning">
+        <h2>Program Learning Summaries</h2>
+        <p class="section-intro">Key insights and competencies developed through undergraduate coursework. <a href="documents/program-learning-summaries.html" style="color: var(--color-accent-secondary);">View Full Document</a></p>
+
+        <div class="learning-grid">
+            <div class="learning-card">
+                <p class="course-code">ACCT 105</p>
+                <h4>Accounting Principles I</h4>
+                <p>Developed foundational understanding of financial accounting, including the accounting cycle, financial statement preparation, and analysis of business transactions.</p>
+            </div>
+
+            <div class="learning-card">
+                <p class="course-code">BUSN 410</p>
+                <h4>Business Law</h4>
+                <p>Examined legal frameworks governing business operations, contract law, employment regulations, and ethical considerations in business decision-making.</p>
+            </div>
+
+            <div class="learning-card">
+                <p class="course-code">COMM 120</p>
+                <h4>Business Communications</h4>
+                <p>Enhanced professional communication skills including written correspondence, presentation techniques, and cross-cultural business communication strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Derrick Jones | Professional ePortfolio</p>
+        <p style="margin-top: 0.75rem;">
+            <a href="https://www.linkedin.com/in/derrick-c-jones/" target="_blank" style="color: var(--color-accent-secondary); text-decoration: none; margin-right: 1.5rem;">LinkedIn</a>
+            <a href="https://djones-git.github.io/Portfolio/" target="_blank" style="color: var(--color-accent-secondary); text-decoration: none;">Portfolio</a>
+        </p>
+    </footer>
+</body>
+</html>

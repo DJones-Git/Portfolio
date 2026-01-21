@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary | Derrick Jones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f8f9fa;
+            --color-text: #1a1a2e;
+            --color-text-muted: #4a4a68;
+            --color-accent: #1e3a5f;
+            --color-accent-secondary: #c9a227;
+            --color-accent-light: #e8eef4;
+            --color-border: #d1d9e6;
+            --color-white: #ffffff;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+            font-size: 11pt;
+        }
+
+        .document-header {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 0.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .document-header h1 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .document-header .back-link {
+            color: var(--color-accent-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: opacity 0.2s;
+            position: absolute;
+            right: 0;
+        }
+
+        .document-header .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .doc-nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
+        }
+
+        .doc-nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .doc-nav a:hover {
+            color: var(--color-white);
+        }
+
+        .doc-nav a.active {
+            color: var(--color-accent-secondary);
+            font-weight: 500;
+        }
+
+        .document-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .document-paper {
+            background: var(--color-white);
+            padding: 0.75in;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--color-border);
+        }
+
+        .paper-header {
+            text-align: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .paper-header h2 {
+            font-family: var(--font-display);
+            font-size: 18pt;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.15rem;
+        }
+
+        .paper-header .subtitle {
+            color: var(--color-accent-secondary);
+            font-weight: 500;
+            font-size: 10pt;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 12pt;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-top: 1rem;
+            margin-bottom: 0.4rem;
+            padding-bottom: 0.15rem;
+            border-bottom: 2px solid var(--color-accent-secondary);
+        }
+
+        h3:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 0.6rem;
+            text-align: justify;
+            font-size: 11pt;
+        }
+
+        ul {
+            margin-left: 1.25rem;
+            margin-bottom: 0.6rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+            font-size: 11pt;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-light);
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            border-left: 4px solid var(--color-accent-secondary);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .print-btn {
+            display: block;
+            width: fit-content;
+            margin: 1.5rem auto;
+            padding: 10px 25px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--color-accent-secondary);
+        }
+
+        @media print {
+            .document-header, .print-btn { display: none !important; }
+            .document-container { padding: 0; margin: 0; max-width: none; }
+            .document-paper { box-shadow: none; border: none; padding: 0.5in; }
+            body { background: white; font-size: 11pt; }
+            @page { margin: 0.5in; size: letter; }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-header">
+        <div class="header-top">
+            <h1>Executive Summary</h1>
+            <a href="../index.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Portfolio
+            </a>
+        </div>
+        <nav class="doc-nav">
+            <a href="cover-letter.html">Cover Letter</a>
+            <a href="resume.html">Resume</a>
+            <a href="executive-summary.html" class="active">Executive Summary</a>
+            <a href="program-learning-summaries.html">Learning Summaries</a>
+            <a href="reference-request-letter.html">Reference Request</a>
+            <a href="thank-you-letter.html">Thank You Letter</a>
+        </nav>
+    </div>
+
+    <div class="document-container">
+        <div class="document-paper">
+            <header class="paper-header">
+                <h2>Derrick Jones</h2>
+                <p class="subtitle">Project Manager | Data Analyst | Army National Guard</p>
+            </header>
+
+            <h3>Portfolio Overview</h3>
+            <p>
+                This ePortfolio showcases my professional qualifications, academic achievements, and career development. The portfolio is organized into the following sections:
+            </p>
+            <ul>
+                <li><strong>Professional Documents:</strong> Cover letter, resume, and executive summary</li>
+                <li><strong>Professional Experience:</strong> Dual timeline of civilian and military careers</li>
+                <li><strong>Certifications:</strong> Industry credentials including SAFe Scrum Master and Lean Six Sigma Green Belt</li>
+                <li><strong>Academic Credentials:</strong> Education details with registrar contact information</li>
+                <li><strong>References:</strong> Professional references available upon request</li>
+                <li><strong>Learning Summaries:</strong> Reflections on key courses that shaped my business acumen</li>
+            </ul>
+
+            <h3>Professional Background</h3>
+            <p>
+                With professional experience spanning data analytics consulting, defense contracting, and corporate business analysis, I have built a career focused on delivering measurable results through data-driven decision making and cross-functional collaboration. My journey has taken me from business analysis roles in healthcare analytics to knowledge management positions supporting Army organizations, and most recently to data analytics consulting.
+            </p>
+            <p>
+                Throughout my career, I have consistently demonstrated the ability to bridge the gap between technical capabilities and business objectives. At Parallon, I managed the Post Call Interactive Analytics system, leveraging NLP techniques to improve speech analytics accuracy. At U.S. Army Cadet Command, I developed SharePoint solutions that enhanced organizational knowledge sharing across multiple departments. These experiences have reinforced my commitment to using technology as a tool for operational improvement.
+            </p>
+            <p>
+                Concurrently, I have served in the Army National Guard since 2012, progressing from Military Police Officer to Counterintelligence Special Agent with the 20th Special Forces Group (Airborne). This dual-career experience has developed my ability to lead diverse teams, operate effectively under pressure, and adapt quickly to complex and ambiguous environments. The discipline, strategic thinking, and leadership skills cultivated through military service directly enhance my civilian professional contributions.
+            </p>
+
+            <h3>Academic Foundation</h3>
+            <p>
+                The Business Administration program develops well-rounded professionals capable of critical thinking, effective communication, and ethical decision-making. Three courses particularly exemplify the program's interconnected competencies:
+            </p>
+            <ul>
+                <li><strong>ACCT 105 - Accounting Principles:</strong> Established financial literacy foundation for project budgeting and resource allocation</li>
+                <li><strong>BUSN 410 - Business Law:</strong> Enhanced ability to identify risks in agreements and ensure compliance</li>
+                <li><strong>COMM 120 - Business Communications:</strong> Developed professional writing and presentation skills for stakeholder engagement</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Key Outcome:</strong> These disciplines prepared me to analyze business situations holistically, considering financial implications, legal constraints, and stakeholder communication needs simultaneously.
+                </p>
+            </div>
+
+            <h3>Career Goals</h3>
+            <p>
+                I am driven by a commitment to continuous improvement, both personally and professionally. My goals center on making a positive impact through meaningful work while pursuing growth opportunities that challenge me to develop new capabilities:
+            </p>
+            <ul>
+                <li>Pursue the Project Management Professional (PMP) certification to formalize project leadership expertise</li>
+                <li>Expand technical proficiency in data analytics, business intelligence, and emerging technologies</li>
+                <li>Apply Lean Six Sigma methodologies to drive process improvements that deliver tangible organizational value</li>
+                <li>Seek leadership opportunities that allow me to mentor emerging professionals and build high-performing teams</li>
+                <li>Continue serving in the Army National Guard while maintaining excellence in civilian career pursuits</li>
+            </ul>
+            <p>
+                The combination of academic credentials, professional certifications, and unique dual-career experience positions me to contribute meaningfully to any organization. I embrace new challenges as opportunities for growth and remain committed to making a positive difference in every role I undertake.
+            </p>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+</body>
+</html>
